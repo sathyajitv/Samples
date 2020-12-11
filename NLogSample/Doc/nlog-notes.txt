@@ -1,0 +1,12 @@
+﻿
+NLog provides an API for logging messages to one or more targets.
+
+Log Levels: Fatal, Error, Warn, Info, Debug, Trace
+
+
+
+
+Links:
+https://blog.elmah.io/nlog-tutorial-the-essential-guide-for-logging-from-csharp/
+https://brutaldev.com/post/logging-setup-in-5-minutes-with-nlog
+
