@@ -9,4 +9,28 @@ Log Levels: Fatal, Error, Warn, Info, Debug, Trace
 Links:
 https://blog.elmah.io/nlog-tutorial-the-essential-guide-for-logging-from-csharp/
 https://brutaldev.com/post/logging-setup-in-5-minutes-with-nlog
+https://github.com/nlog/NLog/wiki/Configuration-file
+https://nlog-project.org/documentation/v4.7.0/html/R_Project_NLog.htm
 
+
+
+File Logging
+------------
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <targets>
+    <target xsi:type="File"
+            name="file"
+            fileName="log.txt"
+            archiveFileName="log.{#}.txt"
+            archiveNumbering="Date"
+            archiveEvery="Day"
+            archiveDateFormat="yyyyMMdd" />
+  </targets>
+
+  <rules>
+    <logger name="*" minlevel="Trace" writeTo="file" />
+  </rules>
+</nlog>
