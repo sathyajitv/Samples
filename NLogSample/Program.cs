@@ -16,23 +16,23 @@ namespace NLogSample
 {
     class Program
     {
-        private static Logger _log = LogManager.GetCurrentClassLogger();
-        private static object _syncObj = new object();
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+        private static readonly object SyncObj = new object();
 
         //------------------------------------------------------------------------------
 
         static void Main(string[] args)
         {
             //These messages are written using logging configuration from the app.config file
-            LogMessages(_log);
+            LogMessages(Log);
 
             //Logging configuration is replaced from within code
             ConfigureLoggingFromCode();
-            LogMessages(_log);
+            LogMessages(Log);
 
             //File logging is added from within code. 
             ConfigureLoggingToFile();
-            LogMessages(_log);
+            LogMessages(Log);
 
             //Log to multiple files with dynamic configuration
             List<Task> tasks = new List<Task>();
@@ -54,6 +54,7 @@ namespace NLogSample
         private static void LogMessages(Logger log)
         {
             log.Info("-----------------------------------------------------");
+            log.Trace("This is a trace message");
             log.Debug("This is a debug message");
             log.Info("This is an informational message");
             log.Error(new Exception(), "This is an error message");
@@ -90,7 +91,7 @@ namespace NLogSample
         {
             Console.WriteLine(loggerId);
             
-            lock (_syncObj)
+            lock (SyncObj)
             {
                 LoggingConfiguration config = LogManager.Configuration;
                 var fileTarget = new FileTarget()
