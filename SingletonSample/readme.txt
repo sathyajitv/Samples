@@ -14,6 +14,8 @@ Returning existing lazy singleton instance
 Note: for the lazy singleton, the instance is created only on referencing item.value 
 
 
+https://csharpindepth.com/articles/singleton
+
 
 
 
